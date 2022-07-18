@@ -107,7 +107,7 @@ public struct CropToolbarConfig: CropToolbarConfigProtocol {
 // MARK: - Config
 public struct Config {
     public var prefersStatusBarHidden: Bool = true
-    public var ignoresSafeArea: Bool = false
+    public var ignoresTopSafeArea: Bool = false
     public var presetTransformationType: PresetTransformationType = .none
     public var cropShapeType: CropShapeType = .rect
     public var cropVisualEffectType: CropVisualEffectType = .blurDark

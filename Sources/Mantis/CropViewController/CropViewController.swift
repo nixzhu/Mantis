@@ -476,21 +476,18 @@ extension CropViewController {
         cropToolbar.translatesAutoresizingMaskIntoConstraints = false
         cropView.translatesAutoresizingMaskIntoConstraints = false
 
-        if config.ignoresSafeArea {
-            NSLayoutConstraint.activate([
-                stackView.topAnchor.constraint(equalTo: view.topAnchor),
-                stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-                stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            ])
-        }
+        NSLayoutConstraint.activate([
+            {
+                if config.ignoresTopSafeArea {
+                    return stackView.topAnchor.constraint(equalTo: view.topAnchor)
+                } else {
+                    return stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+                }
+            }(),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
     }
     
     fileprivate func setStackViewAxis() {
