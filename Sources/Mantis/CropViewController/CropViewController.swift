@@ -191,7 +191,11 @@ public class CropViewController: UIViewController {
     }
     
     public override var prefersStatusBarHidden: Bool {
-        return true
+        config.prefersStatusBarHidden
+    }
+
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
     
     public override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
