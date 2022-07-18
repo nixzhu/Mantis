@@ -18,6 +18,7 @@ class CropScrollView: UIScrollView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        decelerationRate = .fast
         alwaysBounceHorizontal = true
         alwaysBounceVertical = true
         showsHorizontalScrollIndicator = false
